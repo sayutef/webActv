@@ -1,0 +1,34 @@
+<div class="form-container">
+    <h1>Agregar Pedido</h1>
+    <form (ngSubmit)="addStudent()" #studentForm="ngForm">
+      
+      <mat-form-field appearance="fill">
+        <mat-label>Name</mat-label>
+        <input matInput [(ngModel)]="newStudent.name" name="name" required>
+      </mat-form-field>
+  
+      <mat-form-field appearance="fill">
+        <mat-label>Alimentos (separadas por comas)</mat-label>
+        <input matInput [(ngModel)]="newStudent.alimentos" name="alimentos" required>
+      </mat-form-field>
+  
+      <button mat-raised-button color="primary" type="submit" id="addStudent" (click)="increment()">Agregar Pedido</button>
+    </form>
+  
+    <mat-card>
+      <mat-card-header>
+        <mat-card-title>Lista de Pedidos</mat-card-title>
+        
+      </mat-card-header>
+      <mat-card-content>
+        <ul>
+          <li *ngFor="let student of studentArray">
+            ID: {{ student.id }} | Name: {{ student.name }} | alimentos: {{ student.alimentos.join(', ') }}
+            <button mat-button color="warn" (click)="deleteStudent(student.id)">Eliminar</button>
+            <button (click)="showAli(student.alimentos)">Pedidos</button>
+          </li>
+        </ul>
+      </mat-card-content>
+    </mat-card>
+  </div>
+  <app-footer></app-footer> 
